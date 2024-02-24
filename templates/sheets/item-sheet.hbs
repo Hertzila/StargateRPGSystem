@@ -9,7 +9,7 @@
             <h1 class="charname flexrow">
                 <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
             </h1>
-            {{#if (isNotInnate item)}}
+            {{#if (isNotInnate item.type)}}
                 <div class="flexrow flex-group-center">
                     <div class="resource flex-center flexrow" style="max-width:40%">
                         <label class="resource-label">Carried</label>
@@ -25,18 +25,20 @@
                     </div>
                 </div>
             {{else}}
-                <div class="flexrow flex-group-left">
-                    <label class="resource-label">MP Cost</label>
-                    <div class="resource-content flexrow flex-center flex-between">
-                        <input type="text" name="system.feat.mpCost" value="{{system.feat.mpCost}}" data-dtype="String"/>
+                {{#if (isFeat item.type)}}
+                    <div class="flexrow flex-group-left">
+                        <label class="resource-label">MP Cost</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="system.feat.mpCost" value="{{system.feat.mpCost}}" data-dtype="String"/>
+                        </div>
                     </div>
-                </div>
-                <div class="flexrow flex-group-left">
-                    <label class="resource-label">Requirement</label>
-                    <div class="resource-content flexrow flex-center flex-between">
-                        <input type="text" name="system.feat.requirement" value="{{system.feat.requirement}}" data-dtype="String"/>
+                    <div class="flexrow flex-group-left">
+                        <label class="resource-label">Requirement</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="system.feat.requirement" value="{{system.feat.requirement}}" data-dtype="String"/>
+                        </div>
                     </div>
-                </div>
+                {{/if}}
             {{/if}}
             {{#if (equalTo item.type "weapon")}}
                 {{> "systems/sgrpg/templates/sheets/parts/weapon-header.hbs"}}
