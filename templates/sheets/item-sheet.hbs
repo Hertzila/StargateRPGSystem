@@ -9,28 +9,45 @@
             <h1 class="charname flexrow">
                 <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
             </h1>
-            <div class="flexrow flex-group-center">
-                <div class="resource flex-center flexrow" style="max-width:40%">
-                    <label class="resource-label">Carried</label>
-                    <div class="resource-content flexrow flex-center flex-between">
-                        <input name="system.carried" type="checkbox" {{checked system.carried}} data-dtype="Boolean" />
+            {{#if (isNotInnate item.type)}}
+                <div class="flexrow flex-group-center">
+                    <div class="resource flex-center flexrow" style="max-width:40%">
+                        <label class="resource-label">Carried</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input name="system.carried" type="checkbox" {{checked system.carried}} data-dtype="Boolean" />
+                        </div>
+                    </div>
+                    <div class="resource flex-center flexrow">
+                        <label class="resource-label">Part of Base Kit</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input name="system.partOfBaseKit" type="checkbox" {{checked system.partOfBaseKit}} data-dtype="Boolean" />
+                        </div>
                     </div>
                 </div>
-                <div class="resource flex-center flexrow">
-                    <label class="resource-label">Part of Base Kit</label>
-                    <div class="resource-content flexrow flex-center flex-between">
-                        <input name="system.partOfBaseKit" type="checkbox" {{checked system.partOfBaseKit}} data-dtype="Boolean" />
+            {{else}}
+                {{#if (isFeat item.type)}}
+                    <div class="flexrow flex-group-left">
+                        <label class="resource-label">MP Cost</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="system.feat.mpCost" value="{{system.feat.mpCost}}" data-dtype="String"/>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <div class="flexrow flex-group-left">
+                        <label class="resource-label">Requirement</label>
+                        <div class="resource-content flexrow flex-center flex-between">
+                            <input type="text" name="system.feat.requirement" value="{{system.feat.requirement}}" data-dtype="String"/>
+                        </div>
+                    </div>
+                {{/if}}
+            {{/if}}
             {{#if (equalTo item.type "weapon")}}
-            {{> "systems/sgrpg/templates/sheets/parts/weapon-header.hbs"}}
+                {{> "systems/sgrpg/templates/sheets/parts/weapon-header.hbs"}}
             {{/if}}
             {{#if (equalTo item.type "equip")}}
-            {{> "systems/sgrpg/templates/sheets/parts/equip-header.hbs"}}
+                {{> "systems/sgrpg/templates/sheets/parts/equip-header.hbs"}}
             {{/if}}
             {{#if (equalTo item.type "armor")}}
-            {{> "systems/sgrpg/templates/sheets/parts/armor-header.hbs"}}
+                {{> "systems/sgrpg/templates/sheets/parts/armor-header.hbs"}}
             {{/if}}
         </div>
     </header>
@@ -48,13 +65,13 @@
         </div>
         <div class="tab flexrow details" data-tab="details">
             {{#if (equalTo item.type "weapon")}}
-            {{> "systems/sgrpg/templates/sheets/parts/weapon-details.hbs"}}
+                {{> "systems/sgrpg/templates/sheets/parts/weapon-details.hbs"}}
             {{/if}}
             {{#if (equalTo item.type "equip")}}
-            {{> "systems/sgrpg/templates/sheets/parts/equip-details.hbs"}}
+                {{> "systems/sgrpg/templates/sheets/parts/equip-details.hbs"}}
             {{/if}}
             {{#if (equalTo item.type "armor")}}
-            {{> "systems/sgrpg/templates/sheets/parts/armor-details.hbs"}}
+                {{> "systems/sgrpg/templates/sheets/parts/armor-details.hbs"}}
             {{/if}}
         </div>
         {{#if (equalTo item.type "weapon")}}

@@ -3,7 +3,7 @@
     <div class="sheet-header">
         <nav class="sheet-navigation tabs" data-group="primary">
             <a class="item" data-tab="character">Character</a>
-            <a class="item" data-tab="background">Background</a>
+            <a class="item" data-tab="background">Features & Inventory</a>
             <a class="item" data-tab="advanced">Advanced</a>
             <a class="item" data-tab="credits">Credits</a>
             <!-- <a class="item" data-tab="settings">Settings</a> NOT IMPLEMENTED YET-->
@@ -257,31 +257,10 @@
         <!--  --------------------------- PAGE 2 ---------------------------------------------- -->
         <!--  --------------------------------------------------------------------------------- -->
         <main class="background tab-content tab2 page2 tab" data-tab="background">
-
-            <section class="racial_abilities columnflex nowrap center">
-                <label>Racial Abilities</label>
-                {{editor editorData.racial target="system.abilities.racial" button=true owner=owner editable=editable rollData=rollData}}
-            </section>
-
-            <section class="feats columnflex nowrap center">
-                <label>Feats</label>
-                {{editor editorData.feats target="system.abilities.feats" button=true owner=owner editable=editable rollData=rollData}}
-            </section>
-
-            <section class="class columnflex nowrap center">
-                <label>Class Abilities</label>
-                {{editor editorData.class target="system.abilities.class" button=true owner=owner editable=editable rollData=rollData}}
-            </section>
-
             <section class="equipment columnflex nowrap center item-list">
                 <label>Base Kit</label>
                 {{> "systems/sgrpg/templates/sheets/parts/actor-basekit-inventory.hbs"}}
                 <div class="flex1"></div>
-            </section>
-
-            <section class="prof columnflex nowrap center">
-                <label>Proficiencies</label>
-                {{editor editorData.proficiencies target="system.abilities.proficiencies" button=true owner=owner editable=editable rollData=rollData}}
             </section>
 
             <section class="equipment columnflex nowrap center item-list">
@@ -290,7 +269,121 @@
                 <div class="flex1"></div>
             </section>
 
+            <!-- Race Features-->
+            <section class="feat columnflex nowrap center item-list">
+                <label>Race Features</label>
+                <table class="item-list inventory">
+                    <thead>
+                    <tr>
+                        <th class="bold">Name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each actor.raceFeatures as |item|}}
+                        <tr class="inventory-item item" data-item-id="{{item._id}}">
+                            <td>
+                                <a class="item-control item-roll"><span class="item-image" style="background-image: url({{item.img}})"></span></a>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                <div class="flex1"></div>
+            </section>
+            <!-- End Race Class Features -->
 
+            <!-- Origins-->
+            <section class="feat columnflex nowrap center item-list">
+                <label>Origins</label>
+                <table class="item-list inventory">
+                    <thead>
+                    <tr>
+                        <th class="bold">Name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each actor.origins as |item|}}
+                        <tr class="inventory-item item" data-item-id="{{item._id}}">
+                            <td>
+                                <a class="item-control item-roll"><span class="item-image" style="background-image: url({{item.img}})"></span></a>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                <div class="flex1"></div>
+            </section>
+            <!-- End Origins Features -->
+
+            <!-- Class Features-->
+            <section class="feat columnflex nowrap center item-list">
+                <label>Class Features</label>
+                <table class="item-list inventory">
+                    <thead>
+                    <tr>
+                        <th class="bold">Name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each actor.classFeatures as |item|}}
+                        <tr class="inventory-item item" data-item-id="{{item._id}}">
+                            <td>
+                                <a class="item-control item-roll"><span class="item-image" style="background-image: url({{item.img}})"></span></a>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                <div class="flex1"></div>
+            </section>
+            <!-- End Class Features -->
+
+            <!-- Class Features-->
+            <section class="feat columnflex nowrap center item-list">
+                <label>Features</label>
+                <table class="item-list inventory">
+                    <thead>
+                    <tr>
+                        <th class="bold">Name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each actor.feats as |item|}}
+                        <tr class="inventory-item item" data-item-id="{{item._id}}">
+                            <td>
+                                <a class="item-control item-roll"><span class="item-image" style="background-image: url({{item.img}})"></span></a>
+                                {{item.name}}
+                            </td>
+                            <td>
+                                <a class="item-control item-edit"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                <div class="flex1"></div>
+            </section>
+            <!-- End Class Features -->
         </main>
 
         <!--  --------------------------------------------------------------------------------- -->

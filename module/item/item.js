@@ -424,6 +424,8 @@ export default class ItemSg extends Item {
             actor: this.actor,
             tokenId: token?.uuid || null,
             item: this,
+            isFeat: this.type === "feat",
+            hasDetails: this.type.includes(["armor","weapon","equip"]),
             system: await this.getChatData(),
             hasAttack: this.hasAttack,
             hasAreaTarget: game.user.can("TEMPLATE_CREATE") && this.hasAreaTarget,

@@ -12,9 +12,11 @@ export const preloadHandlebarsTemplates = async function () {
         "systems/sgrpg/templates/sheets/parts/equip-details.hbs",
         "systems/sgrpg/templates/sheets/parts/armor-details.hbs",
         "systems/sgrpg/templates/sheets/parts/npc-details.hbs",
+        "systems/sgrpg/templates/sheets/parts/feat-details.hbs",
         "systems/sgrpg/templates/sheets/parts/equip-header.hbs",
         "systems/sgrpg/templates/sheets/parts/weapon-header.hbs",
         "systems/sgrpg/templates/sheets/parts/armor-header.hbs",
+        "systems/sgrpg/templates/sheets/parts/feat-header.hbs",
 
         // Actor Sheet Partials
         "systems/sgrpg/templates/sheets/parts/vehicle-details.hbs",
@@ -22,7 +24,8 @@ export const preloadHandlebarsTemplates = async function () {
         "systems/sgrpg/templates/sheets/parts/actor-armor-inventory.hbs",
         "systems/sgrpg/templates/sheets/parts/actor-equip-inventory.hbs",
         "systems/sgrpg/templates/sheets/parts/actor-basekit-inventory.hbs",
-        "systems/sgrpg/templates/sheets/parts/actor-bulk-progress.hbs"
+        "systems/sgrpg/templates/sheets/parts/actor-bulk-progress.hbs",
+        "systems/sgrpg/templates/sheets/parts/actor-feat-progress.hbs"
     ]);
 };
 
@@ -32,7 +35,23 @@ export function registerHandlebarsHelpersSG() {
     });
 
     Handlebars.registerHelper('equalTo', function (val, compare) {
-        return val == compare;
+        return val === compare;
+    });
+
+    Handlebars.registerHelper('notEqualTo', function (val, compare) {
+        return val !== compare;
+    });
+
+    Handlebars.registerHelper('isFeat', function (val) {
+        return val === "feat";
+    });
+
+    Handlebars.registerHelper('hasDetails', function (val) {
+        return val.type.includes(["armor","weapon","equip"]);
+    });
+
+    Handlebars.registerHelper('isNotInnate', function (val) {
+        return val.includes(["armor","weapon","equip"]);
     });
 
     Handlebars.registerHelper('consumesAmmo', function (item) {

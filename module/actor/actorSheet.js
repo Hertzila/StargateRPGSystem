@@ -109,6 +109,10 @@ export default class SGActorSheet extends ActorSheet {
         const basekit = [];
         const weapons = [];
         const armors = [];
+        const raceFeatures = [];
+        const origins = [];
+        const classFeatures = [];
+        const feats = [];
 
         // Iterate through items, allocating to containers
         for (let i of sheetData.items) {
@@ -129,6 +133,18 @@ export default class SGActorSheet extends ActorSheet {
                 case 'armor':
                     armors.push(i);
                     break;
+                case 'raceFeature':
+                    raceFeatures.push(i);
+                    break;
+                case 'origin':
+                    origins.push(i);
+                    break;
+                case 'classFeature':
+                    classFeatures.push(i);
+                    break;
+                case 'feat':
+                    feats.push(i);
+                    break;
                 default:
                     gear.push(i);
                     console.warn("Unknown item type in character data, pushed into gear: " + i.name);
@@ -141,6 +157,10 @@ export default class SGActorSheet extends ActorSheet {
         actorData.basekit = basekit;
         actorData.weapons = weapons;
         actorData.armors = armors;
+        actorData.raceFeatures = raceFeatures;
+        actorData.origins = origins;
+        actorData.classFeatures = classFeatures;
+        actorData.feats = feats;
     }
 
     /**

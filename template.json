@@ -209,7 +209,7 @@
   },
 
   "Item": {
-    "types": [ "weapon", "armor", "equip" ],
+    "types": [ "weapon", "armor", "equip", "raceFeature", "origin", "classFeature", "feat" ],
     "templates": {
       "itemDescription": {
         "description": "",

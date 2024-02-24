@@ -17,7 +17,7 @@
   "compatibility": {
     "minimum": "10.291",
     "verified": 10,
-    "maximum": 10
+    "maximum": 14
   },
   "minimumCoreVersion": "10",
   "scripts": [
@@ -39,6 +39,6 @@
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": null,
   "url": "https://github.com/Hertzila/StargateRPGSystem",
-  "manifest": "https://github.com/Hertzila/StargateRPGSystem/releases/latest/download/system.json",
-  "download": "https://github.com/Hertzila/StargateRPGSystem/releases/download/v1.7.5/system.zip"
+  "manifest": "https://raw.githubusercontent.com/chris-arsenault/StargateRPGSystem/master/system.json",
+  "download": "https://github.com/chris-arsenault/StargateRPGSystem/releases/download/v2.0/system.zip"
 }
