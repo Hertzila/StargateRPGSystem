@@ -9,7 +9,7 @@
             <h1 class="charname flexrow">
                 <input name="name" type="text" value="{{item.name}}" placeholder="Name" />
             </h1>
-            {{#if (notEqualTo item.type "feat")}}
+            {{#if (isNotInnate item)}}
                 <div class="flexrow flex-group-center">
                     <div class="resource flex-center flexrow" style="max-width:40%">
                         <label class="resource-label">Carried</label>

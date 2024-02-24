@@ -50,6 +50,10 @@ export function registerHandlebarsHelpersSG() {
         return val.type.includes(["armor","weapon","equip"]);
     });
 
+    Handlebars.registerHelper('isNotInnate', function (val) {
+        return !val.type.includes(["armor","weapon","equip"]);
+    });
+
     Handlebars.registerHelper('consumesAmmo', function (item) {
         return item?.consumesAmmunition?.() ?? false;
     });
